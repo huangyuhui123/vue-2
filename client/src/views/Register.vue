@@ -101,16 +101,7 @@ export default {
           if (valid) {
            // alert('submit!');
             delete this.registerUser.password2;
-            this.$axios
-            .get("/api/users/test")
-            .then(res => {
-              // 注册成功
-              this.$message({
-                message: "注册成功！",
-                type: "success"
-              });
-              // this.$router.push("/login");
-            });
+        
           //  this.$axios(
           //    {
           //      headers: {
@@ -139,6 +130,18 @@ export default {
         });
 
     },
+  },
+  mounted(){
+        this.$axios
+          .get("/api/users/test")
+          .then(res => {
+            // 注册成功
+            // this.$message({
+            //   message: "注册成功！",
+            //   type: "success"
+            // });
+            // this.$router.push("/login");
+          });
   }
 };
 </script>

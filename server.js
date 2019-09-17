@@ -39,10 +39,12 @@ require("./config/passport")(passport);
 
 
 //使用routes中间件
-app.use("/api/users",users);
-app.use("/api/profiles",profiles);
+// app.use("/api/users",users);
+// app.use("/api/profiles",profiles);
+app.use('/api/users', users);
+app.use('/api/profiles', profiles);
 
-const port = process.env.pPORT || 5000;
+const port = process.env.PORT || 5000;
 
 
 app.listen(port,()=> {
