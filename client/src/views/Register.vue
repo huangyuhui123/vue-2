@@ -99,31 +99,14 @@ export default {
     submitForm(formName){
          this.$refs[formName].validate((valid) => {
           if (valid) {
-           // alert('submit!');
-            delete this.registerUser.password2;
-        
-          //  this.$axios(
-          //    {
-          //      headers: {
-          //               'Content-Type': 'application/json'
-          //           },
-          //           method: 'post',
-          //           url: '/api/users/register',
-          //           data: JSON.stringify(this.registerUser)
-          //    }).
-          //  then(res=>{
-            
-          //      //注册成功
-          //     //  Vue.prototype.$message({
-          //     //      message:"账号注册成功！",
-          //     //      type: "success"
-          //     //  })
-          //      this.$message({
-          //       message: "注册成功！",
-          //       type: "success"
-          //     });
-          //  })
-           //this.$router.push("/login");
+           this.$axios.post('/api/users/register',this.registerUser).
+           then(res=>{
+               this.$message({
+                message: "注册成功！",
+                type: "success"
+              });
+           })
+           this.$router.push("/login");
           }else{
               return false;
           }
@@ -132,16 +115,16 @@ export default {
     },
   },
   mounted(){
-        this.$axios
-          .get("/api/users/test")
-          .then(res => {
-            // 注册成功
-            // this.$message({
-            //   message: "注册成功！",
-            //   type: "success"
-            // });
-            // this.$router.push("/login");
-          });
+        // this.$axios
+        //   .get("/api/users/test")
+        //   .then(res => {
+        //     // 注册成功
+        //     // this.$message({
+        //     //   message: "注册成功！",
+        //     //   type: "success"
+        //     // });
+        //     // this.$router.push("/login");
+        //   });
   }
 };
 </script>

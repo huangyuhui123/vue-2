@@ -91,10 +91,10 @@ router.post("/login",(req,res) =>{
     //查询数据看
     User.findOne({email}).then(
         (user)=>{
+          console.log("user",user)
             if(!user) {
                 return res.status(404).json("用户不存在")
             }
-
             //密码匹配
             bcrypt.compare(password, user.password).then(
                 isMatch =>{
@@ -106,6 +106,7 @@ router.post("/login",(req,res) =>{
                             identity:user.identity,
                             //avatar:user.avatar
                         }
+                        //过期时间为1个小时： 3600秒
                         jwt.sign(rule,keys.secretOrkey,{expiresIn:3600},((err,token)=>{
                             if(err) throw err;
                             res.json({
