@@ -64,14 +64,14 @@ export default {
                localStorage.setItem('eleToken',token)
 
                //解析token
-              //const decode = jwt_decode(token);
+              const decode = jwt_decode(token);
     
               //把解析的token存储到vuex中
-              // this.$store.dispatch("setAuthenticated",!this.isEmpty(decode))
-              // this.$store.dispatch("setUser",decode)
-
+              this.$store.dispatch("setAuthenticated",!this.isEmpty(decode))
+              this.$store.dispatch("setUser",decode)
+              this.$router.push("/index");
            })
-           this.$router.push("/index");
+           
           }else{
               return false;
           }
